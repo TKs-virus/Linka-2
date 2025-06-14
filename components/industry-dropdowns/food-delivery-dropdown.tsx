@@ -31,84 +31,94 @@ export default function FoodDeliveryDropdown() {
               Japanese
             </Link>
           </li>
+        </ul>
+      </div>
+      <div className="space-y-3">
+        <h4 className="font-medium leading-none">Restaurant Types</h4>
+        <ul className="space-y-2">
           <li>
-            <Link href="/food-delivery/cuisines/american" className="text-sm hover:underline">
-              American
+            <Link href="/food-delivery/types/fast-food" className="text-sm hover:underline">
+              Fast Food
+            </Link>
+          </li>
+          <li>
+            <Link href="/food-delivery/types/fine-dining" className="text-sm hover:underline">
+              Fine Dining
+            </Link>
+          </li>
+          <li>
+            <Link href="/food-delivery/types/cafe" className="text-sm hover:underline">
+              Cafés
+            </Link>
+          </li>
+          <li>
+            <Link href="/food-delivery/types/food-trucks" className="text-sm hover:underline">
+              Food Trucks
+            </Link>
+          </li>
+          <li>
+            <Link href="/food-delivery/types/bakeries" className="text-sm hover:underline">
+              Bakeries
             </Link>
           </li>
         </ul>
       </div>
       <div className="space-y-3">
-        <h4 className="font-medium leading-none">Quick Orders</h4>
+        <h4 className="font-medium leading-none">Dietary Restrictions</h4>
         <ul className="space-y-2">
           <li>
-            <Link href="/food-delivery/categories/pizza" className="text-sm hover:underline">
-              Pizza
+            <Link href="/food-delivery/dietary/vegetarian" className="text-sm hover:underline">
+              Vegetarian
             </Link>
           </li>
           <li>
-            <Link href="/food-delivery/categories/burgers" className="text-sm hover:underline">
-              Burgers
+            <Link href="/food-delivery/dietary/vegan" className="text-sm hover:underline">
+              Vegan
             </Link>
           </li>
           <li>
-            <Link href="/food-delivery/categories/sushi" className="text-sm hover:underline">
-              Sushi
+            <Link href="/food-delivery/dietary/gluten-free" className="text-sm hover:underline">
+              Gluten-Free
             </Link>
           </li>
           <li>
-            <Link href="/food-delivery/categories/desserts" className="text-sm hover:underline">
-              Desserts
+            <Link href="/food-delivery/dietary/keto" className="text-sm hover:underline">
+              Keto
             </Link>
           </li>
           <li>
-            <Link href="/food-delivery/categories/healthy" className="text-sm hover:underline">
-              Healthy Options
+            <Link href="/food-delivery/dietary/halal" className="text-sm hover:underline">
+              Halal
             </Link>
           </li>
         </ul>
       </div>
       <div className="space-y-3">
-        <h4 className="font-medium leading-none">My Account</h4>
+        <h4 className="font-medium leading-none">Sort & Filter</h4>
         <ul className="space-y-2">
           <li>
-            <Link href="/food-delivery/orders" className="text-sm hover:underline">
-              My Orders
+            <Link href="/food-delivery/sort/rating" className="text-sm hover:underline">
+              By Rating
             </Link>
           </li>
           <li>
-            <Link href="/food-delivery/favorites" className="text-sm hover:underline">
-              Favorite Restaurants
+            <Link href="/food-delivery/sort/delivery-time" className="text-sm hover:underline">
+              By Delivery Time
             </Link>
           </li>
           <li>
-            <Link href="/food-delivery/addresses" className="text-sm hover:underline">
-              Delivery Addresses
+            <Link href="/food-delivery/sort/distance" className="text-sm hover:underline">
+              By Distance
             </Link>
           </li>
           <li>
-            <Link href="/food-delivery/payment" className="text-sm hover:underline">
-              Payment Methods
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <div className="space-y-3">
-        <h4 className="font-medium leading-none">Special Offers</h4>
-        <ul className="space-y-2">
-          <li>
-            <Link href="/food-delivery/deals" className="text-sm hover:underline">
-              Today's Deals
+            <Link href="/food-delivery/filter/price-range" className="text-sm hover:underline">
+              Price Range
             </Link>
           </li>
           <li>
-            <Link href="/food-delivery/promotions" className="text-sm hover:underline">
-              Promotions
-            </Link>
-          </li>
-          <li>
-            <Link href="/food-delivery/free-delivery" className="text-sm hover:underline">
-              Free Delivery
+            <Link href="/food-delivery/filter/offers" className="text-sm hover:underline">
+              Special Offers
             </Link>
           </li>
         </ul>

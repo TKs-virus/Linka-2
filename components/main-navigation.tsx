@@ -1,102 +1,224 @@
 "use client"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Menu } from "lucide-react"
+
 import { useState } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import {
+  ShoppingCart,
+  Utensils,
+  Plane,
+  Stethoscope,
+  GraduationCap,
+  DollarSign,
+  Briefcase,
+  Film,
+  HomeIcon,
+  Truck,
+  Package,
+} from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Menu } from "lucide-react"
+
+import EcommerceDropdown from "./industry-dropdowns/ecommerce-dropdown"
+import FoodDeliveryDropdown from "./industry-dropdowns/food-delivery-dropdown"
+import TravelDropdown from "./industry-dropdowns/travel-dropdown"
+import HealthcareDropdown from "./industry-dropdowns/healthcare-dropdown"
+import EducationDropdown from "./industry-dropdowns/education-dropdown"
+import FinancialDropdown from "./industry-dropdowns/financial-dropdown"
+import ProfessionalDropdown from "./industry-dropdowns/professional-dropdown"
+import EntertainmentDropdown from "./industry-dropdowns/entertainment-dropdown"
+import HomeServicesDropdown from "./industry-dropdowns/home-services-dropdown"
+import LogisticsDropdown from "./industry-dropdowns/logistics-dropdown"
 
 export default function MainNavigation() {
-  const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
+  const [mobileOpen, setMobileOpen] = useState(false)
 
-  const industries = [
-    { name: "Travel", href: "/travel" },
-    { name: "Healthcare", href: "/healthcare" },
-    { name: "Education", href: "/education" },
-    { name: "Professional", href: "/professional" },
-    { name: "Financial", href: "/financial" },
-    { name: "Entertainment", href: "/entertainment" },
-    { name: "Home Services", href: "/home-services" },
-    { name: "Logistics", href: "/logistics" },
-    { name: "E-commerce", href: "/ecommerce" },
-    { name: "Food Delivery", href: "/food-delivery" },
-    { name: "Wholesale", href: "/wholesale" },
-    { name: "Fabric & Textiles", href: "/fabric-textiles" },
-    { name: "VehicleStore", href: "/vehiclestore" },
+  const mainNavItems = [
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact", href: "/contact" },
+  ]
+
+  const industryItems = [
+    {
+      name: "E-commerce",
+      href: "/ecommerce",
+      icon: <ShoppingCart className="h-4 w-4 mr-2" />,
+      component: <EcommerceDropdown />,
+    },
+    {
+      name: "Food Delivery",
+      href: "/food-delivery",
+      icon: <Utensils className="h-4 w-4 mr-2" />,
+      component: <FoodDeliveryDropdown />,
+    },
+    {
+      name: "Travel & Tourism",
+      href: "/travel",
+      icon: <Plane className="h-4 w-4 mr-2" />,
+      component: <TravelDropdown />,
+    },
+    {
+      name: "Healthcare",
+      href: "/healthcare",
+      icon: <Stethoscope className="h-4 w-4 mr-2" />,
+      component: <HealthcareDropdown />,
+    },
+    {
+      name: "Education",
+      href: "/education",
+      icon: <GraduationCap className="h-4 w-4 mr-2" />,
+      component: <EducationDropdown />,
+    },
+    {
+      name: "Financial Services",
+      href: "/financial",
+      icon: <DollarSign className="h-4 w-4 mr-2" />,
+      component: <FinancialDropdown />,
+    },
+    {
+      name: "Professional Services",
+      href: "/professional",
+      icon: <Briefcase className="h-4 w-4 mr-2" />,
+      component: <ProfessionalDropdown />,
+    },
+    {
+      name: "Entertainment",
+      href: "/entertainment",
+      icon: <Film className="h-4 w-4 mr-2" />,
+      component: <EntertainmentDropdown />,
+    },
+    {
+      name: "Home Services",
+      href: "/home-services",
+      icon: <HomeIcon className="h-4 w-4 mr-2" />,
+      component: <HomeServicesDropdown />,
+    },
+    {
+      name: "Logistics & Delivery",
+      href: "/logistics",
+      icon: <Truck className="h-4 w-4 mr-2" />,
+      component: <LogisticsDropdown />,
+    },
   ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
-      <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
+      <div className="container flex h-16 items-center">
+        <div className="mr-4 flex items-center">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="h-8 w-8 bg-blue-600 rounded-lg"></div>
-            <span className="font-bold text-xl">MultiPlatform</span>
+            <Package className="h-6 w-6" />
+            <span className="font-bold">Linka</span>
           </Link>
+        </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
-            {industries.slice(0, 6).map((industry) => (
-              <Link
-                key={industry.name}
-                href={industry.href}
-                className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
-              >
-                {industry.name}
-              </Link>
-            ))}
-            <div className="relative group">
-              <button className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">More</button>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-white border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                <div className="py-2">
-                  {industries.slice(6).map((industry) => (
-                    <Link
-                      key={industry.name}
-                      href={industry.href}
-                      className="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-blue-600"
-                    >
-                      {industry.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </nav>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex md:flex-1">
+          <NavigationMenu>
+            <NavigationMenuList>
+              {/* Main Navigation Items */}
+              {mainNavItems.map((item) => (
+                <NavigationMenuItem key={item.name}>
+                  <Link href={item.href} legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>{item.name}</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              ))}
 
-          <div className="flex items-center space-x-4">
-            <div className="hidden md:flex items-center space-x-2">
-              <Button variant="ghost">Vendor Login</Button>
-              <Button>Join as Provider</Button>
-            </div>
+              {/* Services Dropdown */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    {industryItems.map((item) => (
+                      <li key={item.name}>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href={item.href}
+                            className="flex select-none items-center rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            {item.icon}
+                            <div className="text-sm font-medium leading-none">{item.name}</div>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
 
-            {/* Mobile Menu Button */}
-            <button onClick={() => setIsOpen(!isOpen)} className="md:hidden p-2 rounded-md hover:bg-gray-100">
-              <Menu className="h-5 w-5" />
-            </button>
-          </div>
+              {/* Industry-specific Dropdowns */}
+              {industryItems.map((item) => (
+                <NavigationMenuItem key={item.name}>
+                  <NavigationMenuTrigger>{item.name}</NavigationMenuTrigger>
+                  <NavigationMenuContent>{item.component}</NavigationMenuContent>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden border-t bg-white">
-            <div className="py-4 space-y-2">
-              {industries.map((industry) => (
-                <Link
-                  key={industry.name}
-                  href={industry.href}
-                  className="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-blue-600"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {industry.name}
-                </Link>
-              ))}
-              <div className="border-t pt-4 px-4 space-y-2">
-                <Button variant="ghost" className="w-full justify-start">
-                  Vendor Login
-                </Button>
-                <Button className="w-full">Join as Provider</Button>
-              </div>
-            </div>
-          </div>
-        )}
+        <div className="flex md:hidden ml-auto">
+          <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+              <nav className="flex flex-col gap-4">
+                {mainNavItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={cn(
+                      "text-sm font-medium transition-colors hover:text-primary",
+                      pathname === item.href ? "text-primary" : "text-muted-foreground",
+                    )}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+                <div className="h-px bg-border" />
+                <div className="font-medium">Services</div>
+                {industryItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="flex items-center text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.icon}
+                    {item.name}
+                  </Link>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
+
+        {/* User Actions */}
+        <div className="ml-auto flex items-center space-x-4">
+          <Button variant="outline">Sign In</Button>
+          <Button>Sign Up</Button>
+        </div>
       </div>
     </header>
   )

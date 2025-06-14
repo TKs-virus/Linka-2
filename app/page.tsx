@@ -1,48 +1,51 @@
-"use client"
+import MainNavigation from "@/components/main-navigation"
 
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-
-export default function HomePage() {
-  const industries = [
-    { name: "Travel", href: "/travel", icon: "✈️" },
-    { name: "Healthcare", href: "/healthcare", icon: "🏥" },
-    { name: "Education", href: "/education", icon: "📚" },
-    { name: "Professional", href: "/professional", icon: "💼" },
-    { name: "Financial", href: "/financial", icon: "💰" },
-    { name: "Entertainment", href: "/entertainment", icon: "🎬" },
-    { name: "Home Services", href: "/home-services", icon: "🏠" },
-    { name: "Logistics", href: "/logistics", icon: "📦" },
-    { name: "E-commerce", href: "/ecommerce", icon: "🛒" },
-    { name: "Food Delivery", href: "/food-delivery", icon: "🍕" },
-    { name: "Wholesale", href: "/wholesale", icon: "🏭" },
-    { name: "Fabric & Textiles", href: "/fabric-textiles", icon: "🧵" },
-    { name: "VehicleStore", href: "/vehiclestore", icon: "🚗" },
-  ]
-
+export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
-      <main className="container mx-auto px-4 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Multi-Industry Platform</h1>
-          <p className="text-gray-600 text-lg">Connect with services across multiple industries</p>
-        </div>
-
-        <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {industries.map((industry, index) => (
-            <Link key={index} href={industry.href}>
-              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
-                <CardHeader className="text-center">
-                  <div className="text-4xl mb-2">{industry.icon}</div>
-                  <CardTitle className="text-lg">{industry.name}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <Button className="w-full">Explore Services</Button>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
+    <div className="min-h-screen bg-background">
+      <MainNavigation />
+      <main className="container mx-auto px-4 py-24">
+        <div className="flex flex-col items-center justify-center space-y-8 text-center">
+          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+            Your All-in-One Service Platform
+          </h1>
+          <p className="max-w-[700px] text-lg text-muted-foreground">
+            Access multiple services across various industries - all in one place.
+          </p>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+            {/* Industry cards would go here */}
+            <div className="flex flex-col items-center rounded-lg border bg-card p-6 shadow-sm">
+              <h3 className="text-lg font-medium">E-commerce</h3>
+            </div>
+             <div className="flex flex-col items-center rounded-lg border bg-card p-6 shadow-sm">
+              <h3 className="text-lg font-medium">Education</h3>
+            </div>
+             <div className="flex flex-col items-center rounded-lg border bg-card p-6 shadow-sm">
+              <h3 className="text-lg font-medium">Entertainment</h3>
+            </div>
+             <div className="flex flex-col items-center rounded-lg border bg-card p-6 shadow-sm">
+              <h3 className="text-lg font-medium">Financial</h3>
+            </div>
+            <div className="flex flex-col items-center rounded-lg border bg-card p-6 shadow-sm">
+              <h3 className="text-lg font-medium">Food Delivery</h3>
+            </div>
+             <div className="flex flex-col items-center rounded-lg border bg-card p-6 shadow-sm">
+              <h3 className="text-lg font-medium">HealthCare</h3>
+            </div>
+             <div className="flex flex-col items-center rounded-lg border bg-card p-6 shadow-sm">
+              <h3 className="text-lg font-medium">Home-Services</h3>
+            </div>
+             <div className="flex flex-col items-center rounded-lg border bg-card p-6 shadow-sm">
+              <h3 className="text-lg font-medium">Logistics</h3>
+            </div>
+             <div className="flex flex-col items-center rounded-lg border bg-card p-6 shadow-sm">
+              <h3 className="text-lg font-medium">Professional</h3>
+            </div>
+            <div className="flex flex-col items-center rounded-lg border bg-card p-6 shadow-sm">
+              <h3 className="text-lg font-medium">Travel & Tourism</h3>
+            </div>
+            {/* Additional industry cards would continue */}
+          </div>
         </div>
       </main>
     </div>
