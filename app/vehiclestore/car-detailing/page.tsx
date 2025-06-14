@@ -1,5 +1,5 @@
-import CarDetailingService from "@/components/vehiclestore/car-detailing-service"
+import CarDetailingServicePage from "@/components/vehiclestore/car-detailing-service-page"
 
 export default function CarDetailingPage() {
-  return <CarDetailingService />
+  return <CarDetailingServicePage />
 }

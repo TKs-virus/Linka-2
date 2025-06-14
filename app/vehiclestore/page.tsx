@@ -1,5 +1,5 @@
-import VehicleStorePage from "@/components/vehiclestore/vehiclestore-page"
+import VehicleStoreLandingPage from "@/components/vehiclestore/vehiclestore-landing-page"
 
-export default function VehicleStore() {
-  return <VehicleStorePage />
+export default function VehicleStorePage() {
+  return <VehicleStoreLandingPage />
 }
